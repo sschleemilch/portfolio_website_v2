@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/brands.min.css")
+
+  body
+    include include/head
+    div(id="particles-js")
+      canvas(class="particles-js-canvas-el" style="width: 100%; height: 100%")
+      script(src="/javascripts/particles.min.js")
+      script(src="/javascripts/particles.config.js")
+    block content
+    include include/foot
