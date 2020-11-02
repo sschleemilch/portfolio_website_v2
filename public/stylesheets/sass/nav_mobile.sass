@@ -1,0 +1,66 @@
+div.navMobile
+    display: inline-block
+    position: fixed
+    top: 30px
+    right: 30px
+    user-select: none
+    padding: 19px 0 0 16px
+    width: 54px
+    height: 54px
+    border-radius: 5px
+    background: $grey-darker
+    z-index: 5
+    span
+        display: flex
+        width: 23px
+        height: 2px
+        margin-bottom: 5px
+        position: relative
+        background: $white
+        border-radius: 3px
+        z-index: 1
+        transform-origin: 5px 0
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease
+    input
+        display: flex
+        width: 54px
+        height: 54px
+        position: absolute
+        cursor: pointer
+        opacity: 0
+        z-index: 2
+        top: 0
+        left: 0
+    .list-unstyled
+        padding-left: 0
+        list-style: none
+
+
+#menu
+    position: fixed
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    margin: 0
+    padding-top: 60px
+    background-color: $black-bis
+    -webkit-font-smoothing: antialiased
+    transform-origin: 0 0
+    //transform: translate(-100%, 0)
+    //transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
+    li
+        position: relative
+        padding-left: 30px
+        a
+            text-transform: uppercase
+            transition-delay: 2s
+            font-size: 26px
+            display: block
+            text-decoration: none
+            padding: 14px 0
+            position: relative
+            span
+                position: absolute
+                left: 50px
+                font-weight: 400

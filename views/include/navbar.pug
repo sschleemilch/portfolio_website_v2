@@ -1,4 +1,4 @@
-header(class="header")
+header(class="header is-hidden-mobile is-hidden-tablet-only")
     ul(class="icon-menu")
         li(class="icon-box active has-text-centered")
             i(class="fas fa-home")
@@ -8,4 +8,14 @@ header(class="header")
             i(class="fas fa-user")
             a(href="")
                 h2 Profile
-            
+
+div(class="navMobile is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
+    input(type="checkbox")
+    span
+    span
+    span
+    ul(class="list-unstyled" id="menu")
+        li(class="active")
+            a(href="")
+                i(class="fas fa-home")
+                span Home
