@@ -31,6 +31,17 @@ div.navMobile
         z-index: 2
         top: 0
         left: 0
+    input:checked ~ span
+            opacity: 1
+            transform: rotate(45deg) translate(4px, 0)
+            background: $white
+    input:checked ~ span:nth-last-child(3)
+            opacity: 0
+            transform: rotate(0deg) scale(0.2, 0.2)
+    input:checked ~ span:nth-last-child(2)
+            transform: rotate(-45deg) translate(2px, 0px)
+    input:checked ~ ul
+        transform: none!important
     .list-unstyled
         padding-left: 0
         list-style: none
@@ -44,11 +55,11 @@ div.navMobile
     height: 100%
     margin: 0
     padding-top: 60px
-    background-color: $black-bis
+    background-color: $grey-darker
     -webkit-font-smoothing: antialiased
     transform-origin: 0 0
-    //transform: translate(-100%, 0)
-    //transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
+    transform: translate(-100%, 0)
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
     li
         position: relative
         padding-left: 30px
