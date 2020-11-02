@@ -1,12 +1,12 @@
 header(class="header is-hidden-mobile is-hidden-tablet-only")
     ul(class="icon-menu")
-        li(class="icon-box active")
+        li(class=home_active ? "active icon-box" : "icon-box")
             i(class="fas fa-home")
-            a(href="")
+            a(href="/")
                 h2 Home
-        li(class="icon-box")
+        li(class=about_active ? "active icon-box" : "icon-box")
             i(class="fas fa-user")
-            a(href="")
+            a(href="/about")
                 h2 About
 
 div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
@@ -15,11 +15,11 @@ div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullh
     span
     span
     ul(class="list-unstyled" id="menu")
-        li(class="active")
-            a(href="")
+        li(class=home_active ? "active" : "")
+            a(href="/")
                 i(class="fas fa-home")
                 span Home
-        li
-            a(href="")
+        li(class=about_active ? "active": "")
+            a(href="/about")
                 i(class="fas fa-user")
                 span About
