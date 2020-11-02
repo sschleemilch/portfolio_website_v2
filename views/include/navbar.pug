@@ -1,15 +1,15 @@
 header(class="header is-hidden-mobile is-hidden-tablet-only")
     ul(class="icon-menu")
-        li(class="icon-box active has-text-centered")
+        li(class="icon-box active")
             i(class="fas fa-home")
             a(href="")
                 h2 Home
         li(class="icon-box")
             i(class="fas fa-user")
             a(href="")
-                h2 Profile
+                h2 About
 
-div(class="navMobile is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
+div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
     input(type="checkbox")
     span
     span
@@ -19,3 +19,7 @@ div(class="navMobile is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
             a(href="")
                 i(class="fas fa-home")
                 span Home
+        li
+            a(href="")
+                i(class="fas fa-user")
+                span About

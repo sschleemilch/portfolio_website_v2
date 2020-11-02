@@ -1,4 +1,4 @@
-div.navMobile
+#navMobile
     display: inline-block
     position: fixed
     top: 30px
@@ -10,17 +10,6 @@ div.navMobile
     border-radius: 5px
     background: $grey-darker
     z-index: 5
-    span
-        display: flex
-        width: 23px
-        height: 2px
-        margin-bottom: 5px
-        position: relative
-        background: $white
-        border-radius: 3px
-        z-index: 1
-        transform-origin: 5px 0
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease
     input
         display: flex
         width: 54px
@@ -46,6 +35,18 @@ div.navMobile
         padding-left: 0
         list-style: none
 
+#navMobile > span
+    display: flex
+    width: 23px
+    height: 2px
+    margin-bottom: 5px
+    position: relative
+    background: $white
+    border-radius: 3px
+    z-index: 1
+    transform-origin: 5px 0
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease
+
 
 #menu
     position: fixed
@@ -64,6 +65,7 @@ div.navMobile
         position: relative
         padding-left: 30px
         a
+            color: $white
             text-transform: uppercase
             transition-delay: 2s
             font-size: 26px
@@ -75,3 +77,15 @@ div.navMobile
                 position: absolute
                 left: 50px
                 font-weight: 400
+    li:not(:last-child):after
+        position: absolute
+        content: ''
+        height: 1px
+        width: calc(100% - 60px)
+        background: $grey
+        left: 30px
+    li.active
+        a
+            color: $primary
+            span
+                font-weight: 600
