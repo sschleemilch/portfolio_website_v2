@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  section(class="hero is-dark")
+    div(class="hero-body")
+      div(class="container has-text-centered")
+        div(class="headshot")
+        h1(class="title")
+          strong Profile
+    div(class="hero-foot")
+      div(class="container")
+        nav(class="tabs is-boxed")
+          ul
+            li(class=profile_education_active ? "is-active" : "")
+              a(href="education")
+                span(class="icon is-small")
+                    i(class="fa fa-graduation-cap")
+                span Education
+            li(class=profile_work_active ? "is-active" : "")
+              a(href="work")
+                span(class="icon is-small")
+                    i(class="fa fa-briefcase")
+                span Work
+            li(class=profile_hobbies_active ? "is-active" : "")
+              a(href="hobbies")
+                span(class="icon is-small")
+                  i(class="fas fa-clock")
+                span Hobbies
+  block profile_content

@@ -9,13 +9,8 @@ html
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/solid.min.css")
 
   body
-    include include/navbar
+    include navbar
     div(id="preloader" class="preloader")
-    div(id="particles-js")
-      canvas(class="particles-js-canvas-el" style="width: 100%; height: 100%")
-      script(src="/javascripts/preloader.js")
-      script(src="/javascripts/particles.min.js")
-      script(src="/javascripts/particles.config.js")
-      script
+    script(src="/javascripts/preloader.js")
     block content
-    include include/foot
+    include foot

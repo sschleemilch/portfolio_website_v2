@@ -6,8 +6,16 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/about', function(req, res, next) {
-  res.render('about');
+router.get('/work', function(req, res, next) {
+  res.render('profile/work');
+});
+
+router.get('/education', function(req, res, next) {
+  res.render('profile/education');
+});
+
+router.get('/hobbies', function(req, res, next) {
+  res.render('profile/hobbies');
 });
 
 

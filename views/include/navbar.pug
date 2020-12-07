@@ -4,10 +4,10 @@ header(class="header is-hidden-mobile is-hidden-tablet-only")
             i(class="fas fa-home")
             a(href="/")
                 h2 Home
-        li(class=about_active ? "active icon-box" : "icon-box")
+        li(class=profile_active ? "active icon-box" : "icon-box")
             i(class="fas fa-user")
-            a(href="/about")
-                h2 About
+            a(href="/work")
+                h2 Profile
 
 div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
     input(type="checkbox")
@@ -19,7 +19,7 @@ div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullh
             a(href="/")
                 i(class="fas fa-home")
                 span Home
-        li(class=about_active ? "active": "")
-            a(href="/about")
+        li(class=profile_active ? "active": "")
+            a(href="/work")
                 i(class="fas fa-user")
-                span About
+                span Profile
