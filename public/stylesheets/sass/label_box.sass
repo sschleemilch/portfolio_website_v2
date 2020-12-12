@@ -1,0 +1,68 @@
+div.lb
+	border-radius: 0px 3px 3px 3px
+	position: relative
+	border: 2px solid $red
+	padding: 1.5rem
+	margin-top: 2rem
+	margin-bottom: 1rem
+
+	@each $name, $pair in $colors
+		$color: nth($pair, 1)
+		$color-invert: nth($pair, 2)
+		&.is-#{$name}
+			border: 2px solid $color
+			&:before
+				color: $color-invert
+				background: $color
+
+	&.is-done
+		&:before
+			content: "done"
+	&.is-active
+		&:before
+			content: "active"
+	&.is-fun
+		&:before
+			content: "Fun"
+	&.is-milestone
+		&:before
+			content: "Milestone"
+
+	&.is-lib
+		&:before
+			content: "Library"
+	&.is-projects
+		&:before
+			content: "Projects"
+
+	&:before
+		bottom: 100%
+		display: inline-block
+		font-size: 7px
+		font-weight: bold
+		left: -2px
+		letter-spacing: 1px
+		padding: 3px 5px
+		position: absolute
+		text-transform: uppercase
+		vertical-align: top
+		border-radius: 3px 3px 0 0
+		background: $red
+		color: $red-invert
+	&.is-code
+		&:before
+			content: "Code"
+	&:first-child
+		margin-top: 2rem
+	&:last-child
+		margin-bottom: 1.5rem
+	code
+		color: inherit
+		background-color: inherit
+		margin: 0
+		padding: 0
+	pre
+		margin: 0
+		padding: 0
+		background-color: inherit
+		color: inherit
