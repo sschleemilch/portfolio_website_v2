@@ -15,25 +15,13 @@ div.lb
 				color: $color-invert
 				background: $color
 
-	&.is-done
-		&:before
-			content: "done"
-	&.is-active
-		&:before
-			content: "active"
-	&.is-fun
-		&:before
-			content: "Fun"
-	&.is-milestone
-		&:before
-			content: "Milestone"
-
-	&.is-lib
-		&:before
-			content: "Library"
 	&.is-projects
 		&:before
 			content: "Projects"
+
+	&.is-code
+		&:before
+			content: "Code"
 
 	&:before
 		bottom: 100%
@@ -49,9 +37,7 @@ div.lb
 		border-radius: 3px 3px 0 0
 		background: $red
 		color: $red-invert
-	&.is-code
-		&:before
-			content: "Code"
+
 	&:first-child
 		margin-top: 2rem
 	&:last-child

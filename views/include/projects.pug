@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  section(class="hero is-medium is-dark")
+    div(class="hero-body")
+      div(class="container has-text-centered")
+        span(class="icon is-huge")
+          i(class="fa fa-rocket")
+        h1(class="title")
+          strong Projects
+    div(class="hero-foot")
+      div(class="container")
+        nav(class="tabs is-boxed")
+          ul
+            li(class=projects_overview_active ? "is-active" : "")
+              a(href="/projects/overview")
+                span(class="icon is-small")
+                    i(class="fa fa-list")
+                span Overview
+            li(class=projects_gitbash_active ? "is-active" : "")
+              a(href="/projects/gitbash")
+                span(class="icon is-small")
+                    i(class="fa fa-code")
+                span GitBash Powerline
+  block projects_content

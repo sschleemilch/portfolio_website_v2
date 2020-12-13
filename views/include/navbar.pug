@@ -8,6 +8,10 @@ header(class="header is-hidden-mobile is-hidden-tablet-only")
             i(class="fas fa-user")
             a(href="/work")
                 h2 Profile
+        li(class=projects_active ? "active icon-box" : "icon-box")
+            i(class="fas fa-rocket")
+            a(href="/projects/overview")
+                h2 Projects
 
 div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
     input(type="checkbox")
@@ -23,3 +27,7 @@ div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullh
             a(href="/work")
                 i(class="fas fa-user")
                 span Profile
+        li(class=projects_active ? "active": "")
+            a(href="/projects/overview")
+                i(class="fas fa-user")
+                span Projects

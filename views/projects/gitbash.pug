@@ -1,0 +1,28 @@
+extends ../include/projects
+
+block variables
+  - var projects_gitbash_active=true
+  - var projects_active=true
+
+block projects_content
+  section(class="section")
+    div(class="container")
+      article(class="notification")
+        |  Note that this project is deprecated and there exists a follow up project rewritten in C++.
+        |  The reason for rewriting are performance reasons.
+        br
+        | Since I am working professionally with quite large repositories, I did switch
+        |  to a more efficient implementation using the 
+        a(href="https://libgit2.org/") libgit2
+        |  that results in a way faster information gathering
+        | that is also faster that a high level 
+        code git status
+        |  call.
+        br
+        |  You can find the source code of course as well in github <a href="https://github.com/sschleemilch/cpp-gitbash-powerline">here.
+    
+      div(class="content has-text-centered")
+        a(class="button is-primary is-outlined" href="https://github.com/sschleemilch/gitbash-powerline")
+          span(class="icon")
+            i(class="fab fa-github")
+          span Sources

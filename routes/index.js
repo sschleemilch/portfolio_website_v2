@@ -14,9 +14,12 @@ router.get('/education', function(req, res, next) {
   res.render('profile/education');
 });
 
-router.get('/hobbies', function(req, res, next) {
-  res.render('profile/hobbies');
+router.get('/projects/overview', function(req, res, next) {
+  res.render('projects/overview');
 });
 
+router.get('/projects/gitbash', function(req, res, next) {
+  res.render('projects/gitbash');
+});
 
 module.exports = router;
