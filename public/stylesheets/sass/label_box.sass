@@ -1,42 +1,13 @@
 div.lb
-	border-radius: 0px 3px 3px 3px
 	position: relative
-	border: 2px solid $red
 	padding: 1.5rem
 	margin-top: 2rem
 	margin-bottom: 1rem
 
-	@each $name, $pair in $colors
-		$color: nth($pair, 1)
-		$color-invert: nth($pair, 2)
-		&.is-#{$name}
-			border: 2px solid $color
-			&:before
-				color: $color-invert
-				background: $color
-
-	&.is-projects
-		&:before
-			content: "Projects"
-
-	&.is-code
-		&:before
-			content: "Code"
-
-	&:before
-		bottom: 100%
-		display: inline-block
-		font-size: 7px
-		font-weight: bold
-		left: -2px
-		letter-spacing: 1px
-		padding: 3px 5px
-		position: absolute
-		text-transform: uppercase
-		vertical-align: top
-		border-radius: 3px 3px 0 0
-		background: $red
-		color: $red-invert
+	--aug-border-all: 2px
+	--aug-border-bg: #{$primary}
+	--aug-inlay-bg: #{$grey-darker}
+	--aug-inlay-all: 5px
 
 	&:first-child
 		margin-top: 2rem

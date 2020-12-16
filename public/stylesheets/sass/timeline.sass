@@ -7,7 +7,7 @@ $timeline-line-color: $grey !default
 $timeline-line-width: 2px !default
 $timeline-line-style: solid !default
 $timeline-line: $timeline-line-width $timeline-line-style $timeline-line-color !default
-$timeline-content-padding: 1em 0 0 2em !default
+$timeline-content-padding: 1em 1em 1em 2em !default
 $timeline-rtl-content-padding: 1em 2em 0 0 !default
 $timeline-icon-size: .75rem !default
 $timeline-header-width: 4em !default
@@ -47,7 +47,6 @@ $dimensions: 16 24 32 48 64 96 128 !default
       position: absolute
       background: $timeline-marker-color
       border: $timeline-marker-border
-      border-radius: 100%
       content: ""
       display: block
       height: $timeline-marker-size
@@ -110,6 +109,10 @@ $dimensions: 16 24 32 48 64 96 128 !default
       padding: $timeline-content-padding
       .heading
         font-weight: $weight-semibold
+      --aug-border-all: 2px
+      --aug-border-left: 0px
+      --aug-border-bg: #{$grey}
+      --aug-inlay-bg: #{$grey-darker}
 
     @each $name, $pair in $colors
       $color: nth($pair, 1)

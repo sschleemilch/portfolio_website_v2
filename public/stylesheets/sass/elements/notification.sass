@@ -1,4 +1,4 @@
-$notification-background-color: $grey-dark !default
+$notification-background-color: $grey-darker !default
 $notification-code-background-color: $scheme-main !default
 $notification-radius: $radius !default
 $notification-padding: 1.25rem 2.5rem 1.25rem 1.5rem !default
@@ -10,8 +10,9 @@ $notification-colors: $colors !default
 .notification
   @extend %block
   background-color: $notification-background-color
-  border-radius: $notification-radius
   position: relative
+  --aug-border-all: 2px
+  --aug-border-bg: #{$grey}
   +ltr
     padding: $notification-padding-ltr
   +rtl

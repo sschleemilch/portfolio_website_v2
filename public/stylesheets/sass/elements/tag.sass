@@ -1,5 +1,5 @@
 $tag-background-color: $background !default
-$tag-color: $text !default
+$tag-color: $text-invert !default
 $tag-radius: $radius !default
 $tag-delete-margin: 1px !default
 
@@ -59,7 +59,6 @@ $tag-colors: $colors !default
 .tag:not(body)
   align-items: center
   background-color: $tag-background-color
-  border-radius: $tag-radius
   color: $tag-color
   display: inline-flex
   font-size: $size-small
@@ -69,6 +68,10 @@ $tag-colors: $colors !default
   padding-left: 0.75em
   padding-right: 0.75em
   white-space: nowrap
+  --aug-tr: 6px
+  --aug-bl: 6px
+  --aug-tl: 6px
+  --aug-br: 6px
   .delete
     +ltr-property("margin", 0.25rem, false)
     +ltr-property("margin", -0.375rem)
@@ -89,10 +92,22 @@ $tag-colors: $colors !default
   // Sizes
   &.is-normal
     font-size: $size-small
+    --aug-tr: 4px
+    --aug-bl: 4px
+    --aug-tl: 4px
+    --aug-br: 4px
   &.is-medium
     font-size: $size-normal
+    --aug-bl: 8px
+    --aug-tr: 8px
+    --aug-tl: 8px
+    --aug-br: 8px
   &.is-large
     font-size: $size-medium
+    --aug-bl: 12px
+    --aug-tr: 12px
+    --aug-tl: 12px
+    --aug-br: 12px
   .icon
     &:first-child:not(:last-child)
       +ltr-property("margin", -0.375em, false)
