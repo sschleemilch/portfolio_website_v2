@@ -1,0 +1,35 @@
+
+.tw
+    overflow: hidden
+    white-space: nowrap
+    display: inline-block
+    position: relative
+
+.tw::after
+    content: "|"
+    position: absolute
+    right: 0
+
+@keyframes caret
+  0%, 100%
+    opacity: 0
+  50% 
+    opacity: 1
+
+#tw_schleemilch
+    animation: tw_schleemilch
+    animation-duration: 7s
+    animation-timing-function: steps(22, end)
+    animation-iteration-count: infinite
+
+#tw_schleemilch::after
+    animation: caret infinite
+    animation-duration: 1s
+    animation-timing-function: steps(1, end)
+
+@keyframes tw_schleemilch
+  0%, 100%
+    width: 0
+  20%, 80% 
+    width: 11.5em
+
