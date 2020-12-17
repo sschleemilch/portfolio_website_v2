@@ -1,16 +1,16 @@
 header(class="header is-hidden-mobile is-hidden-tablet-only")
-    ul(class="icon-menu" data-augmented-ui="tl-clip bl-clip both")
+    ul(class="icon-menu" data-augmented-ui="tr-clip br-clip both")
         li(class=home_active ? "active icon-box" : "icon-box")
-            i(class="fas fa-home")
             a(href="/")
+                i(class="fas fa-home")
                 h2 Home
         li(class=profile_active ? "active icon-box" : "icon-box")
-            i(class="fas fa-user")
             a(href="/work")
+                i(class="fas fa-user")
                 h2 Profile
         li(class=projects_active ? "active icon-box" : "icon-box")
-            i(class="fas fa-rocket")
             a(href="/projects/overview")
+                i(class="fas fa-rocket")
                 h2 Projects
 
 div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
