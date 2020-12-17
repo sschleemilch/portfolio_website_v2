@@ -1,6 +1,6 @@
 header(class="header is-hidden-mobile is-hidden-tablet-only")
     ul(class="icon-menu" data-augmented-ui="tr-clip br-clip both")
-        li(class=home_active ? "active icon-box" : "icon-box")
+        li(class=home_active ? "active icon-box" : "icon-box" data-augmented-ui="tr-clip")
             a(href="/")
                 i(class="fas fa-home")
                 h2 Home
@@ -8,7 +8,7 @@ header(class="header is-hidden-mobile is-hidden-tablet-only")
             a(href="/work")
                 i(class="fas fa-user")
                 h2 Profile
-        li(class=projects_active ? "active icon-box" : "icon-box")
+        li(class=projects_active ? "active icon-box" : "icon-box" data-augmented-ui="br-clip")
             a(href="/projects/overview")
                 i(class="fas fa-rocket")
                 h2 Projects

@@ -7,12 +7,16 @@ header
     z-index: 99
     ul.icon-menu
         margin: 0
-        padding-right: 1.3em
+        padding-right: 1.25em
         --aug-border-left: 0px
         --aug-border-bg: #{$primary}
-        --aug-border-right: 8px
+        --aug-border-right: 4px
+        --aug-border-top: 4px
+        --aug-border-bottom: 4px
         --aug-inlay-bg: #{$grey-darker}
         --aug-inlay-left: 0px
+        --aug-tr-extend1: 40px
+        --aug-br-extend2: 40px
         transition: .5s
         li.icon-box
             height: 50px
@@ -21,6 +25,8 @@ header
             margin: 20px 0
             background-color: $grey
             transition: .5s
+            --aug-tr: 10px
+            --aug-br: 10px
             a
                 display: flex
                 align-items: center
