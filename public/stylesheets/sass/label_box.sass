@@ -14,8 +14,8 @@ div.lb
 	&:last-child
 		margin-bottom: 1.5rem
 	code
-		color: inherit
-		background-color: inherit
+		color: $black-bis
+		background-color: $primary
 		margin: 0
 		padding: 0
 	pre
@@ -25,7 +25,13 @@ div.lb
 		color: inherit
 
 	&.augment-caption
-		--aug-tl-extend2: 40%
-		--aug-tr-extend1: 40%
-		--aug-tr: 2em
-		--aug-tl: 2em
+		--aug-tr-extend1: 100% - 8em
+		--aug-tl: 20px
+		--aug-tr: 20px
+
+.lb-caption
+	position: absolute
+	left: 25px
+	top: 8px
+	text-transform: uppercase
+	font-size: 12px

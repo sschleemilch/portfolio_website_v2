@@ -6,8 +6,16 @@ block variables
 
 block projects_content
   section(class="section")
+    div(class="content has-text-centered")
+      a(class="button" href="https://github.com/sschleemilch/gitbash-powerline" data-augmented-ui="bl-clip tr-clip border")
+        span(class="icon")
+          i(class="fab fa-github")
+        span Sources
+
     div(class="container")
-      article(class="notification" data-augmented-ui="tl-2-clip-y br-2-clip-y tr-clip bl-clip border")
+      div(class="lb is-primary augment-caption" data-augmented-ui="tl-clip tr-2-clip-x br-clip bl-clip both")
+        p(class="lb-caption") Warning
+        br
         |  Note that this project is deprecated and there exists a follow up project rewritten in C++.
         |  The reason for rewriting are performance reasons.
         br
@@ -19,13 +27,10 @@ block projects_content
         code git status
         |  call.
         br
-        |  You can find the source code of course as well in github <a href="https://github.com/sschleemilch/cpp-gitbash-powerline">here.
-    
-      div(class="content has-text-centered")
-        a(class="button" href="https://github.com/sschleemilch/gitbash-powerline" data-augmented-ui="bl-clip tr-clip border")
-          span(class="icon")
-            i(class="fab fa-github")
-          span Sources
+        |  You can find the source code of course as well in github 
+        a(href="https://github.com/sschleemilch/cpp-gitbash-powerline")
+          | here.
+
       hr(class="top" data-augmented-ui="tl-clip tr-clip border")
       h1(class="title") ABOUT
       h2(class="subtitle") What this project is about
