@@ -22,7 +22,55 @@ block projects_content
         |  You can find the source code of course as well in github <a href="https://github.com/sschleemilch/cpp-gitbash-powerline">here.
     
       div(class="content has-text-centered")
-        a(class="button is-primary is-outlined" href="https://github.com/sschleemilch/gitbash-powerline" data-augmented-ui="bl-clip tr-clip border")
+        a(class="button" href="https://github.com/sschleemilch/gitbash-powerline" data-augmented-ui="bl-clip tr-clip border")
           span(class="icon")
             i(class="fab fa-github")
           span Sources
+      h1(class="title") ABOUT
+      h2(class="subtitle") What this project is about
+      div(class="content")
+        p
+          | This little project is about developing an own customizable Git Bash Powerline application (Or to be fair just an eye candy extension but not only as we will see). As most of you might know, Git is a powerful and well known source code
+          | management tool to version software sources also for large scaling teams. If you do not know already about Git itself, I would suggest reading either the official 
+          a(href="https://git-scm.com/") documentation 
+          | or one of the many tutorials out there. By default, if you install Git from 
+          a(href="https://git-scm.com/downloads") here 
+          | it will look similar to this:
+          div(class="has-text-centered")
+            img(src="/images/git_bash_vanilla.png" alt="Git:Bash:Vanilla" width="500" height="339")
+          hr
+          | The out of the box experience using the Git Bash command line is very good. It uses 
+          |
+          a(href="https://mintty.github.io/") Mintty
+          | which is again based on 
+          a(href="http://cygwin.com/") Cygwin. 
+          | Therefore, inside the Git Bash you will have
+          | basic command line features out of the Linux world bundled with a Git specific prompt
+          | that will show you basic Git information (like the current branch).
+          br
+          br
+          | This Git Bash prompt is very customizable in color and in terms of which information will be shown there. 
+          | Still it was not quite enough for me. I was aiming for full control what and how Git information will be shown there. 
+          | Although there are a lot of GUI clients out there, most of the time I switch back to the maybe "old-school" way on the command-line.
+          | Of course, GUIs have also their upsides, especially when you need to keep track of a lot of branches in your project and need to filter,
+          | highlight certain branches or if you want to investigate the past log. Good GUIs I can recommend are:
+          ul
+            li
+              a(href="http://www.syntevo.com/smartgit/") SmartGit
+            li
+              a(href="https://www.gitkraken.com/") GitKraken
+            li
+              a(href="https://git-scm.com/docs/gitk") GitK 
+              | (is shipped with the Git installation itself)
+            li
+              a(href="https://www.sourcetreeapp.com/") SourceTree
+          | The list is far away from being complete. If you do prefer using a GUI, you could stop
+          | reading here. However, if you are interested in building your own Git Bash Prompt extension or just want to use mine, please keep reading. 
+          | To give the reader a little preview, the result will look like this (for modified files on the "master" branch):
+          br
+          br
+          div(class="has-text-centered")
+            img(src="/images/git_bash_preview.png" alt="Git:Bash:Preview" width="500" height="202")
+          | This preview only shows a small part of the features that are currently implemented.
+
+            

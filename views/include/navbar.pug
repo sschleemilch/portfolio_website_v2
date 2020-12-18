@@ -3,15 +3,18 @@ header(class="header is-hidden-mobile is-hidden-tablet-only")
         li(class=home_active ? "active icon-box" : "icon-box" data-augmented-ui="tr-clip")
             a(href="/")
                 i(class="fas fa-home")
-                h2 Home
+                h2
+                    strong Home
         li(class=profile_active ? "active icon-box" : "icon-box")
             a(href="/work")
                 i(class="fas fa-user")
-                h2 Profile
+                h2 
+                    strong Profile
         li(class=projects_active ? "active icon-box" : "icon-box" data-augmented-ui="br-clip")
             a(href="/projects/overview")
                 i(class="fas fa-rocket")
-                h2 Projects
+                h2 
+                    strong Projects
 
 div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullhd")
     input(type="checkbox")
