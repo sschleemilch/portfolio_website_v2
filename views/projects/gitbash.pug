@@ -35,48 +35,47 @@ block projects_content
       h1(class="title") ABOUT
       h2(class="subtitle") What this project is about
       div(class="content")
-        p
-          | This little project is about developing an own customizable Git Bash Powerline application (Or to be fair just an eye candy extension but not only as we will see). As most of you might know, Git is a powerful and well known source code
-          | management tool to version software sources also for large scaling teams. If you do not know already about Git itself, I would suggest reading either the official 
-          a(href="https://git-scm.com/") documentation 
-          | or one of the many tutorials out there. By default, if you install Git from 
-          a(href="https://git-scm.com/downloads") here 
-          | it will look similar to this:
-          div(class="has-text-centered")
-            img(src="/images/git_bash_vanilla.png" alt="Git:Bash:Vanilla" width="500" height="339")
-          | The out of the box experience using the Git Bash command line is very good. It uses 
-          |
-          a(href="https://mintty.github.io/") Mintty 
-          | which is again based on 
-          a(href="http://cygwin.com/") Cygwin. 
-          | Therefore, inside the Git Bash you will have
-          | basic command line features out of the Linux world bundled with a Git specific prompt
-          | that will show you basic Git information (like the current branch).
-          br
-          br
-          | This Git Bash prompt is very customizable in color and in terms of which information will be shown there. 
-          | Still it was not quite enough for me. I was aiming for full control what and how Git information will be shown there. 
-          | Although there are a lot of GUI clients out there, most of the time I switch back to the maybe "old-school" way on the command-line.
-          | Of course, GUIs have also their upsides, especially when you need to keep track of a lot of branches in your project and need to filter,
-          | highlight certain branches or if you want to investigate the past log. Good GUIs I can recommend are:
-          ul
-            li
-              a(href="http://www.syntevo.com/smartgit/") SmartGit
-            li
-              a(href="https://www.gitkraken.com/") GitKraken
-            li
-              a(href="https://git-scm.com/docs/gitk") GitK 
-              | (is shipped with the Git installation itself)
-            li
-              a(href="https://www.sourcetreeapp.com/") SourceTree
-          | The list is far away from being complete. If you do prefer using a GUI, you could stop
-          | reading here. However, if you are interested in building your own Git Bash Prompt extension or just want to use mine, please keep reading. 
-          | To give the reader a little preview, the result will look like this (for modified files on the "master" branch):
-          br
-          br
-          div(class="has-text-centered")
-            img(src="/images/git_bash_preview.png" alt="Git:Bash:Preview" width="500" height="202")
-          | This preview only shows a small part of the features that are currently implemented.
+        | This little project is about developing an own customizable Git Bash Powerline application (Or to be fair just an eye candy extension but not only as we will see). As most of you might know, Git is a powerful and well known source code
+        | management tool to version software sources also for large scaling teams. If you do not know already about Git itself, I would suggest reading either the official 
+        a(href="https://git-scm.com/") documentation 
+        | or one of the many tutorials out there. By default, if you install Git from 
+        a(href="https://git-scm.com/downloads") here 
+        | it will look similar to this:
+        div(class="has-text-centered")
+          img(src="/images/git_bash_vanilla.png" alt="Git:Bash:Vanilla" width="500" height="339")
+        | The out of the box experience using the Git Bash command line is very good. It uses 
+        |
+        a(href="https://mintty.github.io/") Mintty 
+        | which is again based on 
+        a(href="http://cygwin.com/") Cygwin. 
+        | Therefore, inside the Git Bash you will have
+        | basic command line features out of the Linux world bundled with a Git specific prompt
+        | that will show you basic Git information (like the current branch).
+        br
+        br
+        | This Git Bash prompt is very customizable in color and in terms of which information will be shown there. 
+        | Still it was not quite enough for me. I was aiming for full control what and how Git information will be shown there. 
+        | Although there are a lot of GUI clients out there, most of the time I switch back to the maybe "old-school" way on the command-line.
+        | Of course, GUIs have also their upsides, especially when you need to keep track of a lot of branches in your project and need to filter,
+        | highlight certain branches or if you want to investigate the past log. Good GUIs I can recommend are:
+        ul
+          li
+            a(href="http://www.syntevo.com/smartgit/") SmartGit
+          li
+            a(href="https://www.gitkraken.com/") GitKraken
+          li
+            a(href="https://git-scm.com/docs/gitk") GitK 
+            | (is shipped with the Git installation itself)
+          li
+            a(href="https://www.sourcetreeapp.com/") SourceTree
+        | The list is far away from being complete. If you do prefer using a GUI, you could stop
+        | reading here. However, if you are interested in building your own Git Bash Prompt extension or just want to use mine, please keep reading. 
+        | To give the reader a little preview, the result will look like this (for modified files on the "master" branch):
+        br
+        br
+        div(class="has-text-centered")
+          img(src="/images/git_bash_preview.png" alt="Git:Bash:Preview" width="500" height="202")
+        | This preview only shows a small part of the features that are currently implemented.
       hr
       h1(class="title") Manipulating the Git Bash Prompt
       h2(class="subtitle") .bashrc, .minttyrc, C#
@@ -121,4 +120,129 @@ block projects_content
         | We can do this by adding the following lines to the
         code .bashrc
         |:
+        pre
+          code
+            | function _update_ps1() {
+            |   PS1="$(path/to/gitbash-powerline.exe $? 2> /dev/null)"
+            | }
+            | 
+            | if [ "$TERM" != "linux" ]; then
+            |   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+            | fi
+        | This way, after every command that was executed out of the Git Bash, the program
+        | 
+        code 
+          | program.exe
+        | will be called and its return string will be stored in 
+        code 
+          | PS1program.exe
+        | and therefore displayed. The program being called could of course be also other programs or scripts (e.g. a Python script). Keep in mind that it is a good idea to specify
+        | the absolute path to the program here and not a relative one like I did in the example since your current working directory can of course change. Additionally, it could make sense to display whether the last command succeeded or not. If you wish to display that information, you need to forward the return code of the last command to your script/program. It can be accessed with 
+        code 
+          | $?program.exe
+        |. Also you might not be
+        | interested in displaying error channel information out of your program, so that
+        | adding a pipe to null makes sense by adding 
+        code 
+          | 2> /dev/nullprogram.exe
+        | in the end.
+        | <br><br>
+        | Regarding the style of your Git Bash window you also have the possibility to adapt
+        | the color scheme for it. You can do that in the Git Bash configuration GUI itself or adapt the configuration file for it, the 
+        code 
+          | .minttyrcprogram.exe
+        |. If you wish to use
+        | special symbols, it might be a good choice to install additional fonts that are able
+        | to display those kind of symbols (e.g "DejaVu Sans Mono for Powerline"). 
+        br
+        br
+        | The actual implementation language is totally up to you, I decided to use 
+        a(href="https://docs.microsoft.com/de-de/dotnet/csharp/")
+          | C# 
+        | since I only plan to
+        | use this extension on Windows and it might be faster than a scripting language like Python.
+        br
+        br
+        | In the next section, I will go through parts of my implementation to show how
+        | to extract Git information effectively.
+      hr
+      h1(class="title") Program Structure
+      div(class="content")
+        | I decided to use an object orientated way of programming the behavior.
+        | While developing the following files including one class each came out of it:
+        ul
+          li
+            a(href="https://github.com/sschleemilch/gitbash-powerline/blob/master/gitbash-powerline/Program.cs")
+              code
+                | Program.cs 
+            | defines the actual behavior of which sections
+            | to print on which prompt position.
+          li
+            a(href="https://github.com/sschleemilch/gitbash-powerline/blob/master/gitbash-powerline/BashColor.cs")
+              code
+                | BashColors.cs
+            | abstracts the printing of colors by
+            | providing function interfaces to print colored strings with defined enums for
+            | each color.
+          li
+            a(href="https://github.com/sschleemilch/gitbash-powerline/blob/master/gitbash-powerline/UnicodeSymbols.cs")
+              code
+                | UnicodeSymbols.cs
+            | abstracts the symbols to be printed by assigning 
+            | unicode characters to enums
+          li
+            a(href="https://github.com/sschleemilch/gitbash-powerline/blob/master/gitbash-powerline/GitRepo.cs")
+              code 
+                | GitRepo.cs
+            | capsules the model of the current Git repository
+            | the user might have navigated into. As a constructor, it needs the current
+            | working directory to extract the information from
+        code
+          | Program.cs
+        | is meant to be quite simple and understandable.
+        | I won't get into greater detail about the actual code here but rather pointing out some of the Git plumbing commands which I used to extract the relevant information.
+        | The only behavior that is implemented until now that does not have to do anything with Git
+        | is displaying the current working directory and replacing the home directory string with a
+        code
+          | ~ 
+        | string. Also it will cut the string once it gets too long to still provide 
+        | a compact prompt line.
+      hr
+      h1(class="title")
+        | Relevant Git repository states
+      div(class="content")
+        | So what are the relevant information we are interested in as a developer? This list was extended a few times since once you are familiar with Git, as a developer or Git repository maintainer you really
+        | appreciate every bit of information you don't have to get by typing the git commands yourself. Currently, the following information will be evaluated:
+        ul
+            li 
+              | Branch name/Commit ID
+            li 
+              | Whether the current branch has an upstream counterpart and if yes, how many commits the
+              | upstream counterpart is ahead/behind
+            li 
+              | Whether you have modified 
+              strong 
+                | tracked
+              |  files or not
+            li 
+              | Whether you have staged files or not
+            li 
+              | Whether you are currently in a merge state or not
+            li 
+              | Whether you have 
+              strong
+                | untracked 
+              | files which are not in any 
+              code 
+                | .gitignore
+              | or not
+            li 
+              | Whether you have 
+              strong
+                | untracked 
+              | files which are in a
+              code
+                | .gitignore 
+              |  or not
+        | Those information should also be displayed correctly for submodules.
       hr(class="bottom" data-augmented-ui="bl-clip br-clip border")
