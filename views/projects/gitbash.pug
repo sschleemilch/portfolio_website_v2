@@ -26,6 +26,7 @@ block projects_content
           span(class="icon")
             i(class="fab fa-github")
           span Sources
+      hr(class="top" data-augmented-ui="tl-clip tr-clip border")
       h1(class="title") ABOUT
       h2(class="subtitle") What this project is about
       div(class="content")
@@ -38,10 +39,9 @@ block projects_content
           | it will look similar to this:
           div(class="has-text-centered")
             img(src="/images/git_bash_vanilla.png" alt="Git:Bash:Vanilla" width="500" height="339")
-          hr
           | The out of the box experience using the Git Bash command line is very good. It uses 
           |
-          a(href="https://mintty.github.io/") Mintty
+          a(href="https://mintty.github.io/") Mintty 
           | which is again based on 
           a(href="http://cygwin.com/") Cygwin. 
           | Therefore, inside the Git Bash you will have
@@ -72,5 +72,48 @@ block projects_content
           div(class="has-text-centered")
             img(src="/images/git_bash_preview.png" alt="Git:Bash:Preview" width="500" height="202")
           | This preview only shows a small part of the features that are currently implemented.
-
-            
+      hr
+      h1(class="title") Manipulating the Git Bash Prompt
+      h2(class="subtitle") .bashrc, .minttyrc, C#
+      div(class="content")
+        | To be able to create your own Git Bash Prompt line, one needs to know how to manipulate the prompt string that is displayed after each
+        | command put into the Git Bash. The key for that is the
+        code .bashrc
+        | file. This file will be loaded on a Git Bash spawn, meaning
+        | while opening a new Git Bash instance. It might not exist on a fresh installation though. The
+        code bash.exe
+        | has a built in
+        | 
+        code bashrc
+        | that defines the default behavior you will have out of the box and can be found in your installation path
+        | (e.g.
+        code C:\Program Files\Git\etc\bash.bashrc
+        |). The bash will also look in your home directory for an user defined
+        | file 
+        code .bashrc
+        |.<br><br>
+        | Normally, the home directory will be something like
+        code C:\Users\USER
+        |. You can verify this by
+        | typing 
+        code echo $HOME
+        | in a Git Bash session. If this directory does not yet contain a
+        code .bashrc
+        |, create it.
+        | There, you can manipulate the variable
+        code PS1
+        | to change the prompt string to any string you want.
+        | See <a href="https://wiki.ubuntuusers.de/Bash/Prompt/">here</a> for a good reference how you can style the prompt in general 
+        | using escape sequences. Additionally, the built in Git information are stored in the variable
+        code __git_ps1
+        |. 
+        | So to just style the built in information, you can use this variable and escape sequences to adapt the colors to your needs.
+        | <br><br>
+        | Like explained in the first section, we do want to extract those information by ourself.
+        | So we need to inject a program call to manipulate
+        code PS1
+        | after each prompt command.
+        | We can do this by adding the following lines to the
+        code .bashrc
+        |:
+      hr(class="bottom" data-augmented-ui="bl-clip br-clip border")

@@ -19,7 +19,7 @@ $code-size: 0.875em !default
 $small-font-size: 0.875em !default
 
 $hr-background-color: $grey-darker !default
-$hr-height: 1px !default
+$hr-height: 2px !default
 $hr-margin: 1.5rem 0 !default
 
 $strong-color: $text-strong !default
@@ -90,10 +90,22 @@ code
 
 hr
   background-color: $hr-background-color
-  border: none
   display: block
+  border: none
   height: $hr-height
   margin: $hr-margin
+  &.top
+    color: $grey
+    height: 15px
+    --aug-border-all: 1px
+    --aug-border-bottom: 0px
+    background-color: $black-bis
+  &.bottom
+    color: $grey
+    height: 15px
+    --aug-border-all: 1px
+    --aug-border-top: 0px
+    background-color: $black-bis
 
 img
   height: auto
