@@ -1,8 +1,15 @@
 .button
-  padding: 1em
+  padding-left: 1em
+  padding-right: 1em
+  padding-top: 0.75em
+  padding-bottom: 0.75em
+  background-color: $grey-dark
   text-transform: uppercase
-  --aug-border-all: 2px
+  color: $grey-light
+  transition: .25s
+  &.active
+    background-color: $primary
+    color: $grey-darker
 .button:hover
-  --aug-border-bg: $primary
   background-color: $primary
   color: $grey-darker
