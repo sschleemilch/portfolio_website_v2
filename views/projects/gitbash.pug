@@ -95,7 +95,9 @@ block projects_content
         |). The bash will also look in your home directory for an user defined
         | file 
         code .bashrc
-        |.<br><br>
+        | .
+        br
+        br
         | Normally, the home directory will be something like
         code C:\Users\USER
         |. You can verify this by
@@ -107,12 +109,15 @@ block projects_content
         | There, you can manipulate the variable
         code PS1
         | to change the prompt string to any string you want.
-        | See <a href="https://wiki.ubuntuusers.de/Bash/Prompt/">here</a> for a good reference how you can style the prompt in general 
+        | See
+        a(href="https://wiki.ubuntuusers.de/Bash/Prompt/") here
+        | for a good reference how you can style the prompt in general 
         | using escape sequences. Additionally, the built in Git information are stored in the variable
         code __git_ps1
         |. 
         | So to just style the built in information, you can use this variable and escape sequences to adapt the colors to your needs.
-        | <br><br>
+        br
+        br
         | Like explained in the first section, we do want to extract those information by ourself.
         | So we need to inject a program call to manipulate
         code PS1
@@ -146,7 +151,8 @@ block projects_content
         code 
           | 2> /dev/nullprogram.exe
         | in the end.
-        | <br><br>
+        br
+        br
         | Regarding the style of your Git Bash window you also have the possibility to adapt
         | the color scheme for it. You can do that in the Git Bash configuration GUI itself or adapt the configuration file for it, the 
         code 
@@ -245,4 +251,134 @@ block projects_content
                 | .gitignore 
               |  or not
         | Those information should also be displayed correctly for submodules.
+      hr
+      h1(class="title")
+        | Git Commands
+      div(class="content")
+        | I will now go through the mentioned relevant Git repository states and how to extract the desired information.
+      h1(class="title is-4") Git Repository?
+      div(class="content")
+        | One of the first thing that we need to assure before trying to extract Git repository information is whether the
+        | current directory is a Git repository or not. Also for future commands it is useful to know where the current
+        | repository root is.
+        | This can be done with the following command:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git rev-parse --show-toplevel
+        | The command will return a non-zero exit code in case of the current working directory not being a Git repository.
+        | Otherwise it returns the absolute path to the Git repository root.
+      h1(class="title is-4") Branch name/Commit ID
+      div(class="content")
+        | One could say that this information is one of the most important ones when working with several branches
+        | and submodules to prevent commiting unintentionally on wrong branches or detached HEAD states.
+        | Depending on the state you are currently on, this information could be a real branch name or a commit ID in cases of
+        | specific checkouts or when navigating into submodule directories.
+        br
+        | The easiest way of getting this information I have found so far is:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git symbolic-ref HEAD
+        | This call will return a non-zero value in case of being not on a branch's HEAD. Otherwise it will return the branch
+        | name with a a prefix
+        code refs/heads/ 
+        | that can be replaced with an empty string to leave the raw branch name.
+        | In case of a non-zero return value we need to invoke another Git command to get the commit ID
+        | (if we do want to display that information).
+        | The following command will print the current commit ID where HEAD is pointing to:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git rev-parse HEAD
+      h1(class="title is-4") Branch upstream information
+      div(class="content")
+        | Unless you are creating branches on the fly locally, you will have an upstream branch. And if not, it might be a valuable information to display with the following command that will return zero in case of a present upstream counterpart and a non-zero value otherwise:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git rev-parse --abbrev-ref --symbolic-full-name @{u}
+        | In case of the branch having an upstream branch, we can then examine how many commits the local branch is ahead/behind. The following command will print two values. The first one will be the number of commits the local branch is
+        | ahead and the second number the number of commits the local branch is behind. Therefore, we need a postprocessing step
+        | to parse this output string and extract those numbers. A simple regular expression like
+        code "(\d+)\s*(\d+)"
+        | is enough.
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git rev-list --left-right --count
+      h1(class="title is-4") Modified/Staged files
+      div(class="content")
+        | Also a very basic and useful information is whether you have modified any file that is already tracked. 
+        | The following command 
+        strong without
+        code --quiet
+        | would list all files that have been
+        | modified. Since I decided to be only interested if there are any modified files at all, I am using the 
+        | quiet option that won't display anything but will return zero in case of no modified files.
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git diff-files --quiet
+        | If you are interested in files that have been staged already, the command is slightly different but again
+        | provides the quiet option not to print them:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git diff-files --quiet --cached
+        | Files should also be of interest if they are not in one of your ignore list and therefore might be considered 
+        | to be added:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git ls-files --exclude-staandard --others
+        | The command does not provide the quiet option and therefore we need to analyze the output of the command.
+        | If the output is an empty string, there are none.
+        | Last but not least, it might be of interest if there are files present that are in your ignore list, such 
+        | as build artifacts or IDE configuration files you do not want to track. That might be useful if you want to do a clean build and therefore this information would be visible directly in the prompt:
+        pre(data-augmented-ui="tl-clip tr-clip bl-clip br-clip")
+          code
+            | git ls-files --exclude-staandard --others --ignored     
+      hr
+      h1(class="title") Showcase
+      h2(class="subtitle") How information representation looks like
+      div(class="content")
+        table(class="table")
+          thead
+            tr
+              th Feature
+              th Example Picture
+          tbody
+            tr
+              th Everything clean
+              th
+                img(src="/images/gitbash_all_clean.png" alt="Gitbash:All Clean")
+            tr
+              th Behind + Ahead
+              th
+                img(src="/images/gitbash_behind_and_ahead.png" alt="Gitbash:Behind and Ahead")
+            tr
+              th Detached Head
+              th
+                img(src="/images/gitbash_detached_head.png" alt="Gitbash:Detached Head")
+            tr
+              th Ignored Files present
+              th
+                img(src="/images/gitbash_ignored_files.png" alt="Gitbash:Ignored Files Present")
+            tr
+              th In Merge State
+              th
+                img(src="/images/gitbash_in_merge.png" alt="Gitbash:In Merge State")
+            tr
+              th No Upstream Branch
+              th
+                img(src="/images/gitbash_no_upstream.png" alt="Gitbash:No Upstream Branch")
+            tr
+              th Staged files
+              th
+                img(src="/images/gitbash_staged_files.png" alt="Gitbash:Staged Files Present")
+            tr
+              th Untracked files
+              th
+                img(src="/images/gitbash_untracked_files.png" alt="Gitbash:Untracked Files Present")
+            tr
+              th Untracked and Staged
+              th
+                img(src="/images/gitbash_untracked_and_staged.png" alt="Gitbash:Untracked and Unstaged Files Present")
+            tr
+              th Detached Head and Files Staged
+              th
+                img(src="/images/gitbash_detached_head_staged.png" alt="Gitbash:Detached Head and Files Staged")
       hr(class="bottom" data-augmented-ui="bl-clip br-clip border")
