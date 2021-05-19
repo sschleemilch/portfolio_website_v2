@@ -1,4 +1,4 @@
-function showLoader {
+function showLoader() {
     document.getElementById("preloader").classList.remove("off")
 }
 
