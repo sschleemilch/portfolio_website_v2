@@ -1,17 +1,17 @@
 div(class="navbar is-hidden-mobile is-hidden-tablet-only" data-augmented-ui="br-clip bl-clip border")
     div(class="navbar-start" data-augmented-ui-reset)
         div(class="navbar-item")
-            a(class=home_active ? "active button" : "button" href="/" data-augmented-ui="tr-clip bl-clip")
+            a(class=home_active ? "active button" : "button" href="/" onclick="showLoader()" data-augmented-ui="tr-clip bl-clip")
                 span(class="icon")
                     i(class="fas fa-home")
                 span HOME
         div(class="navbar-item")
-            a(class=profile_active ? "active button" : "button" href="/work" data-augmented-ui="tr-clip bl-clip")
+            a(class=profile_active ? "active button" : "button" href="/work" onclick="showLoader()" data-augmented-ui="tr-clip bl-clip")
                 span(class="icon")
                     i(class="fas fa-user")
                 span PROFILE
         div(class="navbar-item")
-            a(class=projects_active ? "active button" : "button" href="/projects/overview" data-augmented-ui="tr-clip bl-clip")
+            a(class=projects_active ? "active button" : "button" href="/projects/overview" onclick="showLoader()" data-augmented-ui="tr-clip bl-clip")
                 span(class="icon")
                     i(class="fas fa-rocket")
                 span PROJECTS
