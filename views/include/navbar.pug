@@ -23,14 +23,14 @@ div(id="navMobile" class="is-hidden-desktop is-hidden-widescreen is-hidden-fullh
     span
     ul(class="list-unstyled" id="menu")
         li(class=home_active ? "active" : "")
-            a(href="/")
+            a(href="/" onclick="showloader()")
                 i(class="fas fa-home")
                 span Home
         li(class=profile_active ? "active": "")
-            a(href="/work")
+            a(href="/work" onclick="showloader()")
                 i(class="fas fa-user")
                 span Profile
         li(class=projects_active ? "active": "")
-            a(href="/projects/overview")
+            a(href="/projects/overview" onclick="showloader()")
                 i(class="fas fa-rocket")
                 span Projects

@@ -13,12 +13,12 @@ block content
         nav(class="tabs is-boxed")
           ul
             li(class=projects_overview_active ? "is-active" : "" data-augmented-ui="tl-clip tr-clip")
-              a(href="/projects/overview")
+              a(href="/projects/overview" onclick="showloader()")
                 span(class="icon is-small")
                     i(class="fa fa-list")
                 span OVERVIEW
             li(class=projects_gitbash_active ? "is-active" : "" data-augmented-ui="tl-clip tr-clip")
-              a(href="/projects/gitbash")
+              a(href="/projects/gitbash" onclick="showloader()")
                 span(class="icon is-small")
                     i(class="fa fa-code")
                 span GITBASH POWERLINE
